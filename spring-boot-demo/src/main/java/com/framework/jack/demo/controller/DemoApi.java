@@ -1,11 +1,11 @@
 package com.framework.jack.demo.controller;
 
+import com.framework.jack.demo.base.BaseResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.http.ResponseEntity;
 
 /**
  * @author jack
@@ -17,6 +17,6 @@ public interface DemoApi {
     @ApiResponses({
         @ApiResponse(code = 200, response = String.class, message = "登录结果"),
     })
-    ResponseEntity<String> login(@ApiParam(value = "账号", required = true) String username,
-                                 @ApiParam(value = "密码", required = true) String password);
+    BaseResponse<String> login(@ApiParam(value = "账号", required = true) String username,
+                               @ApiParam(value = "密码", required = true) String password);
 }

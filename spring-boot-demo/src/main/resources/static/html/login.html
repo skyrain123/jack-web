@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/ribbon.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <script type="text/javascript" src="../js/jquery-3.1.1.js" ></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.js" ></script>
+</head>
+<body>
+    <div class="text-center login">
+        <div class="wrap"><span class="ribbon6">登录</span></div>
+        <div class="panel">
+            <div class="logo">Jac<span class="logo-end">k</span></div>
+            <input class="form-control input-lg" id="username" type="text" placeholder="账号" autofocus />
+            <input class="form-control input-lg" id="password" type="password" placeholder="密码" />
+            <button class="btn btn-lg btn-block btn-login" id="submit"><i class="glyphicon glyphicon-ok"></i></button>
+            <div class="register">
+                还没有账号？ <a id = "xx" href="#">立即注册</a>
+            </div>
+        </div>
+        <div class="clearfix login-footer">
+            <label class="pull-left remember"><input id="remember" type="checkbox"/>记住密码</label>
+            <a class="pull-right forget" href="#">忘记密码</a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../js/common.js" ></script>
+<script type="text/javascript">
+    $("#submit").click(function() {
+       $.myAjax({
+           url : "../demo/login",
+           data : {
+               username : $("#username").val(),
+               password : $("#password").val()
+           },
+           success : function(data) {
+               $.alert(data);
+//             $.goURL("../");
+           }
+       })
+    });
+</script>
+</html>
