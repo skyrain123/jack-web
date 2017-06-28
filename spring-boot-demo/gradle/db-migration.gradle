@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'mysql:mysql-connector-java:5.1.40'
+        classpath 'org.flywaydb:flyway-gradle-plugin:4.0.3'
+    }
+}
+
+apply plugin: org.flywaydb.gradle.FlywayPlugin
+
+flyway.placeholderReplacement = false
+def environment = hasProperty('env') ? env : null
+
+tasks.findAll { task -> task.name.startsWith('flyway') }.forEach { flywayTask ->
+    flywayTask.dependsOn {
+        def flywayProperties = "src/main/resources/flyway.properties"
+
+        if (environment != null) {
+            def envResources = "conf/${environment}/resources"
+            assert project.file(envResources).exists()
+            sourceSets.main.resources.srcDirs envResources
+
+            flywayProperties = "${envResources}/flyway.properties"
+        }
+
+        assert project.file(flywayProperties).exists()
+
+        def Properties properties = new Properties()
+        project.file(flywayProperties).withInputStream {
+            properties.load(it)
+        }
+        properties.each { key, value ->
+            project.ext[key] = value
+        }
+
+        logger.info("loading flyway properties, file=${project.file(flywayProperties)}")
+    }
+}

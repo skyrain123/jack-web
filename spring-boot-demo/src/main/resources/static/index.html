@@ -1,5 +1,33 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jack</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/menu.css" />
+    <script type="text/javascript" src="js/jquery-3.1.1.js" ></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js" ></script>
+    <script type="text/javascript" src="js/jquery.nicescroll.js" ></script>
+</head>
 <body>
-SSS
+    <div class="menu_panel">
+        <a class="logo" href="#">Jac<span>k</span></a>
+        <ul class="menu_content">
+            <li class="active">
+                <a href="#">
+                    <i class="glyphicon glyphicon-home"></i>
+                    <span>首页</span>
+                </a>
+            </li>
+        </u>
+    </div>
+    <div class="content"></div>
 </body>
+<script type="text/javascript" src="js/common.js" ></script>
+<script type="text/javascript">
+(function() {
+    $(".menu_panel").niceScroll({styler:"fb",cursorcolor:"#65cea7", cursorwidth: '6', cursorborderradius: '0px', background: '#424f63', spacebarenabled:false, cursorborder: '0',  zindex: '1000'});
+})();
+</script>
 </html>

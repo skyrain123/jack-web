@@ -19,4 +19,12 @@ public interface DemoApi {
     })
     BaseResponse<String> login(@ApiParam(value = "账号", required = true) String username,
                                @ApiParam(value = "密码", required = true) String password);
+
+    @ApiOperation(value = "用户注册")
+    @ApiResponses({
+        @ApiResponse(code = 200, response = String.class, message = "注册结果"),
+    })
+    BaseResponse<String> register(@ApiParam(value = "邮箱", required = true) String email,
+                                  @ApiParam(value = "账号", required = true) String username,
+                                  @ApiParam(value = "密码", required = true) String password);
 }
