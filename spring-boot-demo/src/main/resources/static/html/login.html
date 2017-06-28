@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="../css/ribbon.css" />
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/login.css" />
-    <script type="text/javascript" src="../js/jquery-3.1.1.js" ></script>
-    <script type="text/javascript" src="../bootstrap/js/bootstrap.js" ></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/ribbon.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/login.css"/>
+    <script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
-    <div id="login_container" class="container text-center">
-        <form id="login_form">
+<div id="login_container" class="container text-center">
+    <form id="login_form">
         <div class="panel">
             <div class="wrap"><span class="ribbon6"><span>登录</span></span></div>
             <div class="logo">Jac<span>k</span></div>
-            <input class="form-control input-lg" name="username" type="text" placeholder="账号" autofocus />
-            <input class="form-control input-lg" name="password" type="password" placeholder="密码" />
-            <button class="btn btn-lg btn-block btn-submit" id="login" type="button"><i class="glyphicon glyphicon-ok"></i></button>
+            <input class="form-control input-lg" name="username" type="text" placeholder="账号" autofocus/>
+            <input class="form-control input-lg" name="password" type="password" placeholder="密码"/>
+            <button class="btn btn-lg btn-block btn-submit" id="login" type="button"><i
+                    class="glyphicon glyphicon-ok"></i></button>
             <div class="hint">
                 还没有账号？ <a id="go_register" href="#">立即注册</a>
             </div>
@@ -27,63 +28,72 @@
             <label class="pull-left remember"><input id="remember" type="checkbox"/>自动登录</label>
             <a class="pull-right forget" href="#">忘记密码</a>
         </div>
-        </form>
-    </div>
-    <div id="register_container" class="container text-center">
-        <form id="register_form">
+    </form>
+</div>
+<div id="register_container" class="container text-center">
+    <form id="register_form">
         <div class="panel">
             <div class="wrap"><span class="ribbon6"><span>注册</span></span></div>
             <div class="logo">Jac<span class="logo-end">k</span></div>
-            <input class="form-control input-lg" name="email" type="email" placeholder="邮箱" autofocus />
-            <input class="form-control input-lg" name="username" type="text" placeholder="账号" />
-            <input class="form-control input-lg" name="password" type="password" placeholder="密码" />
-            <button class="btn btn-lg btn-block btn-submit" id="register" type="button"><i class="glyphicon glyphicon-ok"></i></button>
+            <input class="form-control input-lg" name="email" type="email" placeholder="邮箱" autofocus/>
+            <input class="form-control input-lg" name="username" type="text" placeholder="账号"/>
+            <input class="form-control input-lg" name="password" type="password" placeholder="密码"/>
+            <button class="btn btn-lg btn-block btn-submit" id="register" type="button"><i
+                    class="glyphicon glyphicon-ok"></i></button>
             <div class="hint">
                 已经有账号？ <a id="go_login" href="#">立即登录</a>
             </div>
         </div>
-        </form>
-    </div>
+    </form>
+</div>
 </body>
-<script type="text/javascript" src="../js/common.js" ></script>
+<script type="text/javascript" src="../js/common.js"></script>
 <script type="text/javascript">
-(function() {
-    $("#login").click(function() {
-       $.myAjax({
-           url : "../demo/login",
-           data : $("#login_form").serialize(),
-           success : function(data) {
-               $.alert(data);
-               $.goURL("../");
-           }
-       })
-    });
-    
-    $("#register").click(function() {
-        $.myAjax({
-           url : "../demo/register",
-           data : $("#register_form").serialize(),
-           success : function(data) {
-               $.alert(data);
-               go("login_container");
-           }
-       })
-    });
-    
-    $("#go_register").click(function() {
-        go("register_container");
-    });
-    $("#go_login").click(function() {
+    (function () {
+        $("#login").click(function () {
+            $.myAjax({
+                url: "../user/login",
+                type: "POST",
+                data: $("#login_form").serialize(),
+                success: function (data) {
+                    $.alert(data);
+                    $.goURL("../");
+                }
+            })
+        });
+
+        $("#register").click(function () {
+            $.myAjax({
+                url: "../user/register",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    username: $("#register_form [name=username]").val(),
+                    password: $("#register_form [name=password]").val(),
+                    email: $("#register_form [name=email]").val()
+                }),
+                success: function (data) {
+                    $.alert(data);
+                    go("login_container");
+                }
+            })
+        });
+
+        $("#go_register").click(function () {
+            go("register_container");
+        });
+        $("#go_login").click(function () {
+            go("login_container");
+        });
+
+        function go(id) {
+            $(".in").addClass("out");
+            $(".in").removeClass("in");
+            $("#" + id).addClass("in");
+            $(".in").removeClass("out");
+        }
+
         go("login_container");
-    });
-    
-    function go(id) {
-        $(".in").addClass("out");
-        $(".in").removeClass("in");
-        $("#" + id).addClass("in");
-        $(".in").removeClass("out");
-    }
-    go("login_container");
-})();
+    })();
 </script>
 </html>

@@ -5,6 +5,7 @@ import com.framework.jack.demo.base.HttpStatus;
 import com.framework.jack.demo.entity.User;
 import com.framework.jack.demo.service.UserService;
 import com.framework.jack.demo.util.StringUtils;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,8 +24,8 @@ public class DemoController implements DemoApi {
 
     @Override
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public BaseResponse login(@RequestParam String username,
-                              @RequestParam String password) {
+    public BaseResponse login(@ApiParam(value = "账号", required = true) @RequestParam String username,
+                              @ApiParam(value = "密码", required = true) @RequestParam String password) {
         User user = userService.login(username, password);
         if (user != null) {
             return BaseResponse.ok("登录成功");
@@ -34,9 +35,9 @@ public class DemoController implements DemoApi {
 
     @Override
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public BaseResponse register(@RequestParam String email,
-                                 @RequestParam String username,
-                                 @RequestParam String password) {
+    public BaseResponse register(@ApiParam(value = "邮箱", required = true) @RequestParam String email,
+                                 @ApiParam(value = "账号", required = true) @RequestParam String username,
+                                 @ApiParam(value = "密码", required = true) @RequestParam String password) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

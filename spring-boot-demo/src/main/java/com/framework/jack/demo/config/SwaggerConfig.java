@@ -47,4 +47,5 @@ public class SwaggerConfig {
             .contact(new Contact("jack", "www.jack.com", "434520410@qq.com"))
             .build();
     }
+
 }

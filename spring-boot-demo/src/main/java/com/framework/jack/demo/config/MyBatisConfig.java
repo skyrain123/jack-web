@@ -1,6 +1,5 @@
 package com.framework.jack.demo.config;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -9,6 +8,5 @@ import org.springframework.context.annotation.Configuration;
  * @author jack
  */
 @Configuration
-@MapperScan("com.framework.jack.demo.mapper")
 public class MyBatisConfig {
 }
