@@ -18,5 +18,5 @@ dependencies {
             "mysql:mysql-connector-java:5.1.40",
             "org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1"
     )
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile('junit:junit:4.11')
 }
