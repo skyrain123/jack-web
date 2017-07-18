@@ -1,0 +1,160 @@
+body {
+    background: linear-gradient(to right, #6BC5A4, #6A8ABE);
+    perspective: 1500px;
+    min-height: 1px;
+}
+
+.container {
+    width: 370px;
+    margin: auto;
+    margin-top: 180px;
+    padding: 0;
+    position: fixed;
+    left: calc(50% - 185px);
+    transform: translateY(-200%);
+}
+
+.wrap:before,
+.wrap:after {
+    background: #8B0000;
+}
+
+.ribbon6 {
+    background: #F8463F;
+    box-shadow: 0 0 0 3px #F8463F, 0px 21px 5px -18px rgba(0, 0, 0, 0.6);
+}
+
+.panel {
+    padding: 20px;
+}
+
+.logo {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #6BC5A4;
+}
+
+.logo>span {
+    color: #6A8ABE;
+}
+
+.form-control,
+.form-control:focus {
+    margin-bottom: 15px;
+    background: #EAEAEC;
+}
+
+.btn-submit,
+.btn-submit:hover,
+.btn-submit:focus {
+    margin: 20px auto;
+    padding: 5px;
+    background: #6BC5A4;
+    color: #FFF;
+    font-size: 30px;
+    outline: none;
+}
+
+.btn-submit:hover {
+    background: #6A8ABE;
+}
+
+.hint {
+    color: #C7C7C7;
+}
+
+.hint a {
+    color: #6BC5A4;
+}
+
+input[type=checkbox] {
+    margin-right: 5px;
+}
+
+.panel-out,
+.panel-out a,
+.panel-out a:hover {
+    color: #FFF;
+    cursor: pointer;
+}
+
+label {
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.out {
+    animation: animationOut 1s both ease-out;
+}
+
+.in {
+    animation: animationIn 1s both ease;
+}
+
+.in .logo {
+    animation: animationLogo .6s 1s both ease;
+}
+
+.in .ribbon6 span {
+    display: block;
+    animation: animationRibbon .6s 1s both ease;
+}
+
+.in .panel-out {
+    animation: animationPanelOut .6s 1s both ease-in-out;
+}
+
+@keyframes animationOut {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translateY(-200%);
+    }
+}
+
+@keyframes animationIn {
+    0% {
+        transform: translateY(-200%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes animationLogo {
+    0% {
+        opacity: 0;
+        transform: translateX(135px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes animationRibbon {
+    0% {
+        opacity: 0;
+        transform: translateY(-35px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes animationPanelOut {
+    0% {
+        opacity: 0;
+        margin-left: -200px;
+        margin-right: -200px;
+    }
+    100% {
+        opacity: 1;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

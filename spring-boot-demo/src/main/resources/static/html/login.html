@@ -57,9 +57,9 @@
                 data: $("#login_form").serialize(),
                 success: function (data) {
                     $.alert(data);
-                    $.goURL("../");
+                    $.goURL("../index.html");
                 }
-            })
+            });
         });
 
         $("#register").click(function () {
@@ -76,7 +76,7 @@
                     $.alert(data);
                     go("login_container");
                 }
-            })
+            });
         });
 
         $("#go_register").click(function () {

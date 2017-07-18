@@ -1,0 +1,30 @@
+.menu_panel {
+    position: fixed;
+    height: 100%;
+    width: 240px;
+    background: #424f63;
+    z-index: 100;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.content {
+    margin-left: 240px;
+}
+
+.menu_panel .logo {
+    width: 240px;
+    text-align: center;
+    font-size: 42px;
+    color: #6BC5A4;
+    display: block;
+    text-decoration: none;
+    line-height: 50px;
+    cursor: pointer;
+    background: #424f63;
+}
+
+.menu_panel .logo>span {
+    color: #6A8ABE;
+}

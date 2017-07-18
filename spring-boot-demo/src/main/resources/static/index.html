@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <base href="/static/" />
     <title>Jack</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="css/common.css" />
@@ -13,21 +14,25 @@
 <body>
     <div class="menu_panel">
         <a class="logo" href="#">Jac<span>k</span></a>
-        <ul class="menu_content">
-            <li class="active">
-                <a href="#">
-                    <i class="glyphicon glyphicon-home"></i>
-                    <span>首页</span>
-                </a>
-            </li>
-        </u>
+        <ul id="xx" style="height: calc(100% - 50px);"></ul>
     </div>
-    <div class="content"></div>
+    <div class="content">
+    </div>
 </body>
 <script type="text/javascript" src="js/common.js" ></script>
 <script type="text/javascript">
 (function() {
-    $(".menu_panel").niceScroll({styler:"fb",cursorcolor:"#65cea7", cursorwidth: '6', cursorborderradius: '0px', background: '#424f63', spacebarenabled:false, cursorborder: '0',  zindex: '1000'});
+    $("html").niceScroll({styler:"fb",cursorcolor:"#65cea7", cursorwidth: '6', cursorborderradius: '0px', background: '#424f63', spacebarenabled:false, cursorborder: '0',  zindex: '1000'});
+   
+    $.ajax({
+        url: "components/menu.html",
+        success: function (data) {
+            var style = $("#xx").attr("style");
+            var obj = $(data);
+            obj.attr("style", obj.attr("style")||"" + " " + style);
+            $("#xx").replaceWith(obj);
+        }
+    });
 })();
 </script>
 </html>

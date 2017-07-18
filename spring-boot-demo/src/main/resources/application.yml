@@ -6,3 +6,7 @@ spring:
     password: root
     maxActive: 5
     minActive: 2
+server:
+  port: 8080
+  context-path: /jack
+

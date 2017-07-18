@@ -1,2 +1,3 @@
 rootProject.name = 'jack-web'
+include 'spring-boot-demo'
 
